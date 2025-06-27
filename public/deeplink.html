@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Deep Linking</title>
+    <script type="module">
+      import { LitElement, html } from "https://unpkg.com/lit@2.2.6?module";
+      class DeepLinkPage extends LitElement {
+        constructor() {
+          super();
+          this.choice = "Default Item";
+        }
+        _submit(e) {
+          // Submit form normally
+          this.shadowRoot.getElementById("deeplinkForm").submit();
+        }
+        render() {
+          return html`
+            <h1>Select Content to Add</h1>
+            <form id="deeplinkForm" method="POST" action="/lti/deeplink">
+              <label>
+                <span>Choose an item:</span>
+                <select
+                  name="product"
+                  @change="${(e) => (this.choice = e.target.value)}"
+                >
+                  <option>Default Item</option>
+                  <option>Extra Resource</option>
+                  <option>Advanced Content</option>
+                </select>
+              </label>
+              <button type="button" @click="${this._submit}">
+                Add to Course
+              </button>
+            </form>
+          `;
+        }
+      }
+      customElements.define("deep-link-page", DeepLinkPage);
+    </script>
+  </head>
+  <body>
+    <deep-link-page></deep-link-page>
+  </body>
+</html>

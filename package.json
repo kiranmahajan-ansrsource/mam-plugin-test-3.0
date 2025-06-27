@@ -1,0 +1,19 @@
+{
+  "name": "mam-plugin-test-3.0",
+  "version": "1.0.0",
+  "description": "MAM Plugin LTI testing",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --env-file=.env --watch index.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "LTI"
+  ],
+  "author": "Kiran Mahajan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "ltijs": "^5.9.7"
+  }
+}
